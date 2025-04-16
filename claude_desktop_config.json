@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "random-value-server": {
+      "command": "python",
+      "args": ["src/main.py"],
+      "env": {
+        "INITIAL_MAX_VALUE": "100",
+        "SERVER_NAME": "Random Value MCP Server",
+        "HOST": "0.0.0.0",
+        "PORT": "8000"
+      }
+    }
+  }
+}
