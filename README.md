@@ -22,30 +22,35 @@ pip install -e .
 
 ### 設定ファイル
 
-サーバの設定は `claude_desktop_config` ファイルで管理できます。以下は設定ファイルの例です：
+サーバの設定は `claude_desktop_config.json` ファイルで管理できます。以下は設定ファイルの例です：
 
-```yaml
-host: 0.0.0.0
-port: 8000
-name: Random Value MCP Server
-instructions: |
-  このサーバは、ランダムな値を生成するAPIを提供します。
-  - get_random_value(): 1から設定された上限値までのランダムな整数を返します
-  - set_max_value(max_value): ランダム値の上限を設定します
-  - get_max_value(): 現在の上限値を取得します
-random_value:
-  initial_max_value: 100
+```json
+{
+  "mcpServers": {
+    "random-value-server": {
+      "command": "python",
+      "args": ["src/main.py"],
+      "env": {
+        "INITIAL_MAX_VALUE": "100",
+        "SERVER_NAME": "Random Value MCP Server",
+        "HOST": "0.0.0.0",
+        "PORT": "8000"
+      }
+    }
+  }
+}
 ```
 
 設定項目の説明：
 
 | 項目 | 説明 | デフォルト値 |
 |------|------|------------|
-| host | サーバのホスト名 | `0.0.0.0` |
-| port | サーバのポート番号 | `8000` |
-| name | サーバ名 | `Random Value MCP Server` |
-| instructions | サーバの説明文 | (上記の説明文) |
-| random_value.initial_max_value | ランダム値の初期上限値 | `100` |
+| command | 実行するコマンド | `python` |
+| args | コマンドライン引数 | `["src/main.py"]` |
+| env.HOST | サーバのホスト名 | `0.0.0.0` |
+| env.PORT | サーバのポート番号 | `8000` |
+| env.SERVER_NAME | サーバ名 | `Random Value MCP Server` |
+| env.INITIAL_MAX_VALUE | ランダム値の初期上限値 | `100` |
 
 ### サーバの起動
 
