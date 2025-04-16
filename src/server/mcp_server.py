@@ -6,11 +6,29 @@ from src.logic.random_value import RandomValueGenerator
 class RandomValueMCPServer:
     """ランダム値生成機能を持つMCPサーバ"""
 
-    def __init__(self):
-        """コンストラクタ"""
-        self.random_generator = RandomValueGenerator()
+    def __init__(self, initial_max_value: int = 100, server_name: str = "Random Value MCP Server", server_instructions: str = None):
+        """
+        コンストラクタ
         
-        self.server = FastMCP(name="Random Value MCP Server")
+        Args:
+            initial_max_value: ランダム値の初期上限値（デフォルト: 100）
+            server_name: サーバ名（デフォルト: "Random Value MCP Server"）
+            server_instructions: サーバの説明文（デフォルト: None）
+        """
+        self.random_generator = RandomValueGenerator(max_value=initial_max_value)
+        
+        if server_instructions is None:
+            server_instructions = (
+                "このサーバは、ランダムな値を生成するAPIを提供します。\n"
+                "- get_random_value(): 1から設定された上限値までのランダムな整数を返します\n"
+                "- set_max_value(max_value): ランダム値の上限を設定します\n"
+                "- get_max_value(): 現在の上限値を取得します"
+            )
+        
+        self.server = FastMCP(
+            name=server_name,
+            instructions=server_instructions
+        )
         
         self.register_tools()
 
