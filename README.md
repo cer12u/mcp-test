@@ -28,10 +28,35 @@ python src/main.py
 
 デフォルトでは `0.0.0.0:8000` でサーバが起動します。
 
+#### コマンドライン引数
+
+以下のコマンドライン引数を使用して、サーバの設定をカスタマイズできます：
+
+| 引数 | 説明 | デフォルト値 |
+|------|------|------------|
+| `--host` | サーバのホスト名 | `0.0.0.0` |
+| `--port` | サーバのポート番号 | `8000` |
+| `--max-value` | ランダム値の初期上限値 | `100` |
+| `--name` | サーバ名 | `Random Value MCP Server` |
+
+#### 使用例
+
 ホスト名やポート番号を変更する場合:
 
 ```bash
 python src/main.py --host localhost --port 8080
+```
+
+ランダム値の初期上限値とサーバ名を変更する場合:
+
+```bash
+python src/main.py --max-value 500 --name "カスタムMCPサーバ"
+```
+
+すべての設定を変更する場合:
+
+```bash
+python src/main.py --host localhost --port 8080 --max-value 500 --name "カスタムMCPサーバ"
 ```
 
 ### API一覧
