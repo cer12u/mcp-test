@@ -65,4 +65,6 @@ class RandomValueMCPServer:
             host: ホスト名（デフォルト: "0.0.0.0"）
             port: ポート番号（デフォルト: 8000）
         """
-        self.server.run(host=host, port=port)
+        import uvicorn
+        app = self.server.sse_app
+        uvicorn.run(app, host=host, port=port)

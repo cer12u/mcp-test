@@ -1,6 +1,6 @@
 """メインスクリプト - MCP サーバを起動"""
 import argparse
-from src.server.mcp_server import RandomValueMCPServer
+from server.mcp_server import RandomValueMCPServer
 
 
 def main():
